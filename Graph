@@ -49,8 +49,8 @@ plt.plot(t,x)
 dicars(plt)
 plt.xlim(0,15) #x轴范围
 plt.ylim(0,80)
-plt.xlabel('x') #x轴标签
-plt.ylabel('t')
+plt.xlabel('t') #x轴标签
+plt.ylabel('x')
 plt.title('x-t')
 #y-t图
 plt.subplot(222)
@@ -58,8 +58,8 @@ plt.plot(t,y)
 dicars(plt)
 plt.xlim(0,15)
 plt.ylim(0,80)
-plt.xlabel('y')
-plt.ylabel('t')
+plt.xlabel('t')
+plt.ylabel('y')
 plt.title('y-t')
 #z-t图
 plt.subplot(223)
@@ -67,8 +67,8 @@ plt.plot(t,z)
 dicars(plt)
 plt.xlim(0,15)
 plt.ylim(0,80)
-plt.xlabel('z')
-plt.ylabel('t')
+plt.xlabel('t')
+plt.ylabel('z')
 plt.title('z-t')
 #三维图
 ax = fig.add_subplot(224,projection='3d')
