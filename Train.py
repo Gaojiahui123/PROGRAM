@@ -1,5 +1,8 @@
 import numpy as np
-a = np.array([1,2,3,4,5])
-b = np.array([2,4,6,8,10])
-c = a + b
-print(c)
+
+a = [1,2]
+a0 = []
+l = [0]
+a0.append(a[-1] - a[-2])
+l.append(a0[-1] * 0.5 * 0.1 ** 2 + l[-1] * 0.1)
+print(l)

@@ -1,0 +1,62 @@
+import time
+import serial
+import matplotlib.pyplot as plt
+from drawnow import *
+import numpy as np
+
+def plotValues(): #绘图定义
+    plt.title('Serial temperature from Arduino')
+    plt.grid(True)
+    plt.ylabel('x')
+    plt.plot(tt,a_x)
+
+def cal(acl):
+    a0 = []
+    l = [0]
+    a0.append(acl[-1] - acl[-2])
+    a00 = np.array(x0)
+    l.append(a00*0.5*0.1**2+l[-1]*0.1)
+    return l
+
+ser = serial.Serial( #读取参数
+    port='COM3',
+    baudrate=9600,
+    parity=serial.PARITY_ODD,
+    stopbits=serial.STOPBITS_TWO,
+    bytesize=serial.SEVENBITS
+)
+data = ''
+a_x = [0]
+a_y = [0]
+a_z = [0]
+r_x = [0]
+r_y = [0]
+r_z = [0]
+m_x = [0]
+m_y = [0]
+m_z = [0]
+tt = [0]
+t = 0
+while True:
+    data = ser.readline()
+    print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())) #显示时间
+    data = str(data)
+    if '-----' in data:
+        continue
+    line = data.split(" ")[1].split("\\")[0].split(",") #分离参数
+    if 'Accl' in data: #将各个参数存入对应列表
+        a_x.append(float(line[0]))
+        a_y.append(float(line[1]))
+        a_z.append(float(line[2]))
+        t += 0.1
+        tt.append(t)
+    if 'Gyro' in data:
+        r_x.append(float(line[0]))
+        r_y.append(float(line[1]))
+        r_z.append(float(line[2]))
+    if 'Mag' in data:
+        m_x.append(float(line[0]))
+        m_y.append(float(line[1]))
+        m_z.append(float(line[2]))
+    drawnow(plotValues)
+
