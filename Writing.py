@@ -23,7 +23,7 @@ tt = 0
 
 workbook = xlwt.Workbook(encoding = 'utf-8')#创建excel，设定编码
 worksheet = workbook.add_sheet('Data')#创建sheet
-worksheet.write(0,0, label = 'Time')
+worksheet.write(0,0, label = 'Time')#写入标题
 worksheet.write(0,1, label = 'xAccel')
 worksheet.write(0,2, label = 'yAccel')
 worksheet.write(0,3, label = 'zAccel')
@@ -35,7 +35,7 @@ worksheet.write(0,8, label = 'yMag')
 worksheet.write(0,9, label = 'zMag')
 
 while True:
-    data = ser.readline()
+    data = ser.readline()#读取串口数据
     data = str(data)
 
     if '-----' in data:
@@ -44,7 +44,7 @@ while True:
         line = data.split(" ")[1].split("\\")[0].split(",") #分离参数
     except:
         continue
-    if 'Accl' in data: #将各个参数存入对应列表
+    if 'Accl' in data: #将各个参数写入excel
         try :
             tt += 1
             time_now = str(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
@@ -52,7 +52,7 @@ while True:
             a_x += 1
             worksheet.write(a_x,1, label = float(line[0]))
         except:
-            worksheet.write(a_x,1, label= '')
+            worksheet.write(a_x,1, label= '')#出错时写入''
         try :
             a_y += 1
             worksheet.write(a_y,2, label = float(line[1]))
@@ -96,4 +96,4 @@ while True:
         except:
             worksheet.write(m_z,9, label= '')
 
-        workbook.save('data01.xls')
+        workbook.save('data01.xls')#保存excel
