@@ -5,22 +5,22 @@ from drawnow import *
 import numpy as np
 
 def plotValues(): #绘图定义
-    plt.title('Serial temperature from Arduino')
+    plt.title('x-z graph')
     plt.grid(True)
-    plt.ylabel('x')
+    plt.ylabel('')
     plt.plot(tt,a_x)
 
 def cal(acl):
     a0 = []
     l = [0]
-    a0.append(acl[-1] - acl[-2])
+    a0.append(acl[-1] - acl[0])
     a00 = np.array(x0)
-    l.append(a00*0.5*0.1**2+l[-1]*0.1)
+    l.append(a00)
     return l
 
 ser = serial.Serial( #读取参数
     port='COM3',
-    baudrate=9600,
+    baudrate=74800,
     parity=serial.PARITY_ODD,
     stopbits=serial.STOPBITS_TWO,
     bytesize=serial.SEVENBITS
@@ -41,6 +41,7 @@ while True:
     data = ser.readline()
     print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())) #显示时间
     data = str(data)
+    print(data)
     if '-----' in data:
         continue
     line = data.split(" ")[1].split("\\")[0].split(",") #分离参数
