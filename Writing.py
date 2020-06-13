@@ -2,6 +2,7 @@ import xlwt
 import time
 import serial
 
+
 ser = serial.Serial( #读取参数
     port='COM3',
     baudrate=74880,
@@ -96,4 +97,4 @@ while True:
         except:
             worksheet.write(m_z,9, label= '')
 
-        workbook.save('data01.xls')#保存excel
+        workbook.save('moving.xls')#保存excel
