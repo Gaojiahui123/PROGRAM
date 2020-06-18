@@ -97,4 +97,4 @@ while True:
         except:
             worksheet.write(m_z,9, label= '')
 
-        workbook.save('moving.xls')#保存excel
+        workbook.save('gyro_y.xls')#保存excel

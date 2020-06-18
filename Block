@@ -1,0 +1,26 @@
+import tkinter
+import tkinter.messagebox
+import random
+
+def choose(num):
+    if target == num:
+        tkinter.messagebox.askokcancel("Congratulation", "Bingo")
+        Bs[num].config(bg='pink', command = lambda : re())
+    else:
+        Bs[num].config(bg='black',state="disable")
+
+def re():
+    Bs.clear()
+    global target
+    target = random.randint(0, 35)
+    for i in range(36):
+        B = tkinter.Button(top, width=5, height=1, command=lambda j=i: choose(j))
+        Bs.append(B)
+    for i in range(36):
+        Bs[i].grid(row=int(i % 6), column=int(i / 6))
+    top.mainloop()
+
+top = tkinter.Tk()
+target = random.randint(0, 35)
+Bs = []
+re()
