@@ -2,22 +2,22 @@ import tkinter
 import tkinter.messagebox
 import random
 
-def choose(num):
+def choose(num): #判断是否猜对
     if target == num:
-        tkinter.messagebox.askokcancel("Congratulation", "Bingo")
+        tkinter.messagebox.askokcancel("Congratulation", "Bingo")  #猜中
         Bs[num].config(bg='pink', command = lambda : re())
     else:
-        Bs[num].config(bg='black',state="disable")
+        Bs[num].config(bg='black',state="disable")  #没猜中
 
-def re():
+def re(): #初始化界面
     Bs.clear()
     global target
-    target = random.randint(0, 35)
+    target = random.randint(0, 35) #初始化随机数
     for i in range(36):
-        B = tkinter.Button(top, width=5, height=1, command=lambda j=i: choose(j))
+        B = tkinter.Button(top, width=5, height=1, command=lambda j=i: choose(j)) #生成按钮
         Bs.append(B)
     for i in range(36):
-        Bs[i].grid(row=int(i % 6), column=int(i / 6))
+        Bs[i].grid(row=int(i % 6), column=int(i / 6)) #网格化布局按钮
     top.mainloop()
 
 top = tkinter.Tk()
