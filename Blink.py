@@ -5,7 +5,7 @@ import time
 root=Tk()
 root.title('LED Control')
 
-ArduinoSerial = serial.Serial('com4',9600)
+ArduinoSerial = serial.Serial('com3',9600)
 time.sleep(0.1)
 
 lab1 = Label(root, width='25', height='5', text='LED 1', bg='white',)
