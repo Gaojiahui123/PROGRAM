@@ -8,11 +8,20 @@ root.title('LED Control')
 ArduinoSerial = serial.Serial('com3',9600)
 time.sleep(0.1)
 
-lab1 = Label(root, width='25', height='5', text='LED 1', bg='white',)
-lab1.grid(column = 1, row = 1)
+lab_power = Label(root, width='25', height='5', text='LED 1', bg='white',)
+lab_power.grid(column = 1, row = 1)
 
-lab2 = Label(root, width='25', height='5', text='LED 2', bg='white',)
-lab2.grid(column = 2, row = 1)
+lab_sleep = Label(root, width='25', height='5', text='LED 2', bg='white',)
+lab_sleep.grid(column = 1, row = 3)
+
+lab_air = Label(root, width='25', height='5', text='LED 2', bg='white',)
+lab_air.grid(column = 2, row = 1)
+
+lab_calib = Label(root, width='25', height='5', text='LED 2', bg='white',)
+lab_calib.grid(column = 2, row = 1)
+
+lab_delay = Label(root, width='25', height='5', text='LED 2', bg='white',)
+lab_delay.grid(column = 2, row = 1)
 
 LED1_ON = Button(root, width='25', height='3', text='ON', bg='green', command=lambda:on1())
 LED1_ON.grid(column = 1, row = 2)
